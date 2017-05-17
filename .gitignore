@@ -32,3 +32,5 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/2013-OOProgrammingWithJava-PART1/week6-105.GuessingGame/nbproject/private/
+/2013-OOProgrammingWithJava-PART1/week6-106.BinarySearch/nbproject/private/
