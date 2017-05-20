@@ -10,7 +10,10 @@ public class Main {
             if(score ==-1){
                 break;
             }
-            gradebook.addGrade(score);    
+            if(score > 0 && score <= 60){
+                gradebook.addGrade(score);  
+            }
+    
         }
         int[] distribution = gradebook.distribute();
         gradebook.printDistribution(distribution);

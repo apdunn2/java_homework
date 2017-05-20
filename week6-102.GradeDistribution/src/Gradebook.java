@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 public class Gradebook {
     private ArrayList<Integer> grades = new ArrayList<Integer>();
-    
+    private int accepted;
     public Gradebook(){
         
     }
@@ -26,7 +26,7 @@ public class Gradebook {
         int[] distribution = new int[6];
         Arrays.fill(distribution, 0);
         for(int grade:grades){
-            distribution[checkScore(grade)]++;
+            distribution[checkScore(grade)]++;          
         }
         return distribution;
         
@@ -38,19 +38,25 @@ public class Gradebook {
             grade = 0;
         }else if(score < 35){
             grade = 1;
+            accepted++;
         }else if(score < 40){
             grade = 2;
+            accepted++;
         }else if(score < 45){
             grade = 3;
+            accepted++;
         }else if(score < 50){
             grade = 4;
+            accepted++;
         }else{
             grade = 5;
+            accepted++;
         }
         return grade;
     }
     
     public void printDistribution(int[] distribution){
+        double acceptancePercentage = (double)accepted/grades.size()*100.0;
         System.out.println("Grade Distribution:");
         for(int i = 5; i >= 0; i--){
             System.out.print(i + ": ");
@@ -59,6 +65,9 @@ public class Gradebook {
             }
             System.out.println("");
         }
+        System.out.print("Acceptance percentage: ");
+        System.out.printf("%.2f", acceptancePercentage);
+        
     }
     
 }
