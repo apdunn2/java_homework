@@ -1,7 +1,17 @@
 
-public class Main {
+import java.util.Scanner;
 
+
+public class Main {
+    private Scanner reader = new Scanner(System.in);
+    
+    
     public static void main(String[] args) {
-        // Write your main program here. Implementing your own classes will be very useful.
+        Scanner reader = new Scanner(System.in);
+        Tournament tourney = new Tournament();
+        TextInterface ui = new TextInterface(reader, tourney);
+        ui.start();
     }
+    
+    
 }
