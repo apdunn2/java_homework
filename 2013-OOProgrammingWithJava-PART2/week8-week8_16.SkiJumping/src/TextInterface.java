@@ -26,6 +26,8 @@ public class TextInterface {
     public void start(){
         System.out.println("Write the names of the participants one at a time; an empty string brings you to the jumping phase.");
         createJumpers();
+        System.out.println("The tournament begins!");
+        jump();
     }
     
     public void createJumpers(){
@@ -38,6 +40,23 @@ public class TextInterface {
             tourney.addJumper(new Jumper(jumperName));
             
             
+        }
+    }
+    
+    public void jump(){
+        int i = 1;
+        while(true){
+            System.out.print("Write \"jump\" to jump; otherwise you quit: ");
+            String userInput = reader.nextLine();
+            if(userInput != "jump"){
+                break;
+            }
+            tourney.sortJumpers();
+            System.out.println("Round " + i);
+            System.out.println("Jumping order:");
+            tourney.printJumpingOrder();
+            tourney.printRoundStatistics();
+            i++;
         }
     }
     

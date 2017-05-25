@@ -12,26 +12,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class Jumper {
+public class Jumper implements Comparable<Jumper>{
     private String name;
     private int totalPoints;
     private Random random;
+    private int roundLength;
+    private ArrayList<Integer> roundJudgesScores;
     
     public Jumper(String name){
         this.name = name;
+        this.random = new Random();
     }
     
     public int lengthScore(){
         int length = random.nextInt(61) + 60;
+        this.roundLength = length;
         return length;
     }
     
     public int judgesScores(){
         ArrayList<Integer> scores = new ArrayList<Integer>();
+        int num  = random.nextInt(12);
         for(int i = 0; i < 5; i++){
-            int score = random.nextInt(11) + 10;
+            Integer score = random.nextInt(11) + 10;
             scores.add(score);            
         }
+        this.roundJudgesScores = new ArrayList(scores);
         Collections.sort(scores);
         scores.remove(4);
         scores.remove(0);
@@ -46,7 +52,27 @@ public class Jumper {
         return sum;
     }
     
+    public void printRoundResults(){
+        System.out.println("  " + this.name);
+        System.out.println("    length: " + this.roundLength);
+        System.out.println("    judge votes: " + this.roundJudgesScores);
+    }
+    
     public void jump(){
         this.totalPoints += judgesScores() + lengthScore();
     }
+
+    public String getName() {
+        return name;
+    }
+    
+    public int compareTo(Jumper jumper){
+        return this.totalPoints - jumper.totalPoints;
+    }
+    
+    public String toString(){
+        return this.name + " (" + this.totalPoints + " points)";
+    }
+    
+    
 }
