@@ -24,16 +24,19 @@ public class TextInterface {
     }
     
     public void start(){
+        System.out.println("Kumpula ski jumping week\n");
         System.out.println("Write the names of the participants one at a time; an empty string brings you to the jumping phase.");
         createJumpers();
-        System.out.println("The tournament begins!");
+        System.out.println("\nThe tournament begins!\n");
         jump();
+        tournamentResults();
     }
     
     public void createJumpers(){
         while(true){
-            System.out.print("Participant name: ");
+            System.out.print("  Participant name:");
             String jumperName = reader.nextLine();
+            System.out.println("");
             if(jumperName.isEmpty()){
                 break;
             }
@@ -48,16 +51,24 @@ public class TextInterface {
         while(true){
             System.out.print("Write \"jump\" to jump; otherwise you quit: ");
             String userInput = reader.nextLine();
-            if(userInput != "jump"){
+            System.out.println("\n");
+            if(!userInput.equals("jump")){
                 break;
             }
             tourney.sortJumpers();
-            System.out.println("Round " + i);
+            System.out.println("Round " + i +"\n");
             System.out.println("Jumping order:");
             tourney.printJumpingOrder();
+            System.out.println("Results of round " + i);
             tourney.printRoundStatistics();
             i++;
         }
+        
+        System.out.println("Thanks!\n");
+    }
+    
+    public void tournamentResults(){
+        tourney.printFinalResults();
     }
     
 

@@ -18,14 +18,17 @@ public class Jumper implements Comparable<Jumper>{
     private Random random;
     private int roundLength;
     private ArrayList<Integer> roundJudgesScores;
+    private ArrayList<Integer> jumpLengths;
     
     public Jumper(String name){
         this.name = name;
         this.random = new Random();
+        this.jumpLengths = new ArrayList<Integer>();
     }
     
     public int lengthScore(){
         int length = random.nextInt(61) + 60;
+        this.jumpLengths.add(length);
         this.roundLength = length;
         return length;
     }
@@ -72,6 +75,10 @@ public class Jumper implements Comparable<Jumper>{
     
     public String toString(){
         return this.name + " (" + this.totalPoints + " points)";
+    }
+
+    public ArrayList<Integer> getJumpLengths() {
+        return jumpLengths;
     }
     
     
