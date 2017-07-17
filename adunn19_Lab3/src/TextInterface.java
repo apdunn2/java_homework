@@ -13,7 +13,7 @@ public class TextInterface {
 			printHomeMenu();
 			int command = Integer.parseInt(reader.nextLine());
 			if(command == 1){
-				AutoInsuranceSale();
+				
 			}
 		}	
 		

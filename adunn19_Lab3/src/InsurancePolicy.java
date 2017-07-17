@@ -4,10 +4,8 @@ public abstract class InsurancePolicy {
 	private double commission;
 	
 	
-	public abstract int getCommission();
+	public abstract double getCommission();
 	
-	public void printSales(){
-		
-	}
+	public abstract void printSales();
 	
 }
